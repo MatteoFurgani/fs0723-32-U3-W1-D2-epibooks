@@ -4,12 +4,14 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import MyNav from "./MyNav";
 import MyFooter from "./MyFooter";
 import AllTheBooks from "./AllTheBooks";
+import Welcome from "./Welcome";
 
 function App() {
   return (
     <div>
       <header>
         <MyNav />
+        <Welcome />
       </header>
       <main>
         <AllTheBooks />
