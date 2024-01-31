@@ -1,10 +1,11 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import MyNav from "./MyNav";
-import MyFooter from "./MyFooter";
-import AllTheBooks from "./AllTheBooks";
-import Welcome from "./Welcome";
+import MyNav from "./components/MyNav";
+import MyFooter from "./components/MyFooter";
+import Welcome from "./components/Welcome";
+import BookList from "./components/BookLIst";
+// import AllTheBooks from "./components/AllTheBooks";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Welcome />
       </header>
       <main>
-        <AllTheBooks />
+        <BookList />
+        {/* <AllTheBooks /> */}
       </main>
       <footer>
         <MyFooter />

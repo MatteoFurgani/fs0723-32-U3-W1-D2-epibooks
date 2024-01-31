@@ -7,7 +7,7 @@ const MyFooter = function () {
     <>
       <Container>
         <Row className="justify-content-cente">
-          <Col xs={12} className="text-center mt-5">
+          <Col xs={12} className="text-center my-5 ">
             <i className="bi bi-facebook mx-5 fs-4"></i>
             <i className="bi bi-twitter mx-5 fs-4"></i>
             <i className="bi bi-whatsapp mx-5 fs-4"></i>
