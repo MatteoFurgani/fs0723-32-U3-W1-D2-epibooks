@@ -8,10 +8,10 @@ const MyFooter = function () {
       <Container>
         <Row className="justify-content-cente">
           <Col xs={12} className="text-center mt-5">
-            <i class="bi bi-facebook mx-5 fs-4"></i>
-            <i class="bi bi-twitter mx-5 fs-4"></i>
-            <i class="bi bi-whatsapp mx-5 fs-4"></i>
-            <i class="bi bi-instagram mx-5 fs-4"></i>
+            <i className="bi bi-facebook mx-5 fs-4"></i>
+            <i className="bi bi-twitter mx-5 fs-4"></i>
+            <i className="bi bi-whatsapp mx-5 fs-4"></i>
+            <i className="bi bi-instagram mx-5 fs-4"></i>
           </Col>
         </Row>
       </Container>
