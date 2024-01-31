@@ -9,7 +9,7 @@ const Welcome = function () {
       <Container>
         <Row className="justify-content-center">
           {["danger"].map((variant) => (
-            <Col xs={6} className="text-center">
+            <Col xs={6} className="text-center mt-3">
               <Alert key={variant} variant={variant}>
                 ATTENZIONE SHOP CHIUSO!
               </Alert>
