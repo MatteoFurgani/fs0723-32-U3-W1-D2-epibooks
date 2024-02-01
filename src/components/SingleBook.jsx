@@ -1,6 +1,8 @@
+import React, { Component } from "react";
 import Card from "react-bootstrap/Card";
+import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Component } from "react";
+import CommentArea from "./CommentArea";
 
 class SingleBook extends Component {
   state = {
@@ -12,12 +14,13 @@ class SingleBook extends Component {
       selected: !prevState.selected,
     }));
   };
+
   render() {
     return (
       <Col key={this.props.Book.asin} xs={6} md={4} lg={2} className="g-3">
         <Card
           onClick={this.toggleSelected}
-          className={`h-100 ${
+          className={`${
             this.state.selected ? "border border-danger border-5" : ""
           }`}
         >
@@ -30,8 +33,16 @@ class SingleBook extends Component {
             <Card.Title>{this.props.Book.title}</Card.Title>
           </Card.Body>
         </Card>
+        {this.state.selected && (
+          <Row>
+            <Col className="mt-3">
+              <CommentArea selectedBookId={this.props.Book.asin} />
+            </Col>
+          </Row>
+        )}
       </Col>
     );
   }
 }
+
 export default SingleBook;
