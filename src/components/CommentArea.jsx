@@ -8,16 +8,19 @@ class CommentArea extends Component {
   };
 
   fetchComments = () => {
-    const { selectedBookId } = this.props;
-    fetch(
-      `https://striveschool-api.herokuapp.com/api/comments/${selectedBookId}`,
-      {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJiODlhYjViMjYxNTAwMTk4YTY5MmQiLCJpYXQiOjE3MDY3ODkyOTIsImV4cCI6MTcwNzk5ODg5Mn0.ZYggs7yUtVxNOAWvgrF-LvfxwnQmzL4vbWw4SxRdGwM",
-        },
-      }
-    )
+    const { book } = this.props;
+
+    if (!book) {
+      // Se non c'è un libro selezionato, non fare il fetch dei commenti
+      return;
+    }
+
+    fetch(`https://striveschool-api.herokuapp.com/api/comments/${book.asin}`, {
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWJiODlhYjViMjYxNTAwMTk4YTY5MmQiLCJpYXQiOjE3MDY3ODkyOTIsImV4cCI6MTcwNzk5ODg5Mn0.ZYggs7yUtVxNOAWvgrF-LvfxwnQmzL4vbWw4SxRdGwM",
+      },
+    })
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -35,15 +38,30 @@ class CommentArea extends Component {
     this.fetchComments();
   }
 
+  componentDidUpdate(prevProps) {
+    // Controlla se il libro è stato cambiato
+    if (this.props.book && this.props.book.asin !== prevProps.book?.asin) {
+      // Se il libro è stato cambiato, fetch dei nuovi commenti
+      this.fetchComments();
+    }
+  }
+
   render() {
+    const { book } = this.props;
+    const { comments } = this.state;
+
     return (
       <div>
-        <h3>Commenti</h3>
-        <CommentList comments={this.state.comments} />
-        <AddComment
-          selectedBookId={this.props.selectedBookId}
-          fetchComments={this.fetchComments}
-        />
+        {book && (
+          <div>
+            <h3>Commenti</h3>
+            <CommentList comments={comments} />
+            <AddComment
+              selectedBookId={book.asin}
+              fetchComments={this.fetchComments}
+            />
+          </div>
+        )}
       </div>
     );
   }
